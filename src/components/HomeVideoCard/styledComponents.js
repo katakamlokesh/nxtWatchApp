@@ -44,7 +44,7 @@ export const ChannelLogo = styled.img`
 `
 export const ThumbnailDetails = styled.div``
 
-export const VideoCardHeading = styled.h1`
+export const VideoCardHeading = styled.p`
   font-family: 'Roboto';
   font-size: 14px;
   font-weight: 500;
@@ -52,20 +52,22 @@ export const VideoCardHeading = styled.h1`
   color: ${props => (props.light ? '#231f20' : '#ffffff')};
 `
 
-export const ChannelViewCountAndPublishedAtExSm = styled.div`
+export const ChannelViewCountAndPublishedAtContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 70%;
+  margin-top: 8px;
   @media screen and (min-width: 576px) {
-    display: none;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
-
 export const ChannelName = styled.p`
   font-family: 'Roboto';
-  font-size: 12px;
+  font-size: 10px;
   color: #909090;
+  padding: 0;
+  margin: 0 6px 0 0;
+  line-height: 1;
   @media screen and (min-width: 576px) {
     font-size: 14px;
     line-height: 2;
@@ -73,43 +75,30 @@ export const ChannelName = styled.p`
   }
 `
 
-export const ViewCount = styled.p`
-  font-family: 'Roboto';
-  font-size: 12px;
-  color: #909090;
-  @media screen and (min-width: 576px) {
-    font-size: 12px;
-    line-height: 2;
-    margin: 0;
-  }
-`
-export const PublishedAt = styled.p`
-  font-family: 'Roboto';
-  font-size: 12px;
-  color: #909090;
-  @media screen and (min-width: 576px) {
-    font-size: 12px;
-    line-height: 2;
-    margin: 0;
-  }
-`
-export const ChannelViewCountAndPublishedAtExLg = styled.div`
-  @media screen and (max-width: 575px) {
-    display: none;
-  }
-`
 export const ViewCountAndPublishedLg = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
 `
+export const MiddleCircle01 = styled.p`
+  font-family: 'Roboto';
+  font-size: 10px;
+  color: #909090;
+  padding: 0;
+  margin: 0 6px 0 0;
+  line-height: 1;
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
+`
+
 export const Text = styled.p`
   font-family: 'Roboto';
   font-size: 10px;
   color: #909090;
   padding: 0;
   margin: 0 6px 0 0;
-  line-height: 2;
+  line-height: 1;
   @media screen and (min-width: 576px) {
     font-size: 12px;
   }

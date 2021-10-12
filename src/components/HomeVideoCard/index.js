@@ -1,6 +1,6 @@
 import {formatDistanceToNowStrict} from 'date-fns'
 
-import {BsFillCircleFill} from 'react-icons/bs'
+import {VscCircleFilled} from 'react-icons/vsc'
 
 import NxtWatchContext from '../../context/NxtWatchContext'
 
@@ -12,12 +12,10 @@ import {
   ThumbnailDetails,
   VideoCardHeading,
   ChannelLogo,
-  ChannelViewCountAndPublishedAtExSm,
   ChannelName,
-  ViewCount,
-  PublishedAt,
-  ChannelViewCountAndPublishedAtExLg,
+  MiddleCircle01,
   ViewCountAndPublishedLg,
+  ChannelViewCountAndPublishedAtContainer,
   Text,
 } from './styledComponents'
 
@@ -49,35 +47,19 @@ const HomeVideoCard = props => (
               <ChannelLogo src={channel.profileImageUrl} alt="channel logo" />
               <ThumbnailDetails>
                 <VideoCardHeading light={lightTheme}>{title}</VideoCardHeading>
-                <ChannelViewCountAndPublishedAtExSm>
-                  <ChannelName>{channel.name}</ChannelName>
-                  <BsFillCircleFill
-                    size="4px"
-                    fill="#909090"
-                    position="center"
-                  />
-                  <ViewCount>{viewCount} Views</ViewCount>
-                  <BsFillCircleFill
-                    size="4px"
-                    fill="#909090"
-                    position="center"
-                  />
-                  <PublishedAt>{exactDuration}</PublishedAt>
-                </ChannelViewCountAndPublishedAtExSm>
-                <ChannelViewCountAndPublishedAtExLg>
+                <ChannelViewCountAndPublishedAtContainer>
                   <ChannelName>{channel.name}</ChannelName>
                   <ViewCountAndPublishedLg>
+                    <MiddleCircle01>
+                      <VscCircleFilled fill="#909090" position="center" />
+                    </MiddleCircle01>
                     <Text>{viewCount} views</Text>
                     <Text>
-                      <BsFillCircleFill
-                        size="4px"
-                        fill="#909090"
-                        position="center"
-                      />
+                      <VscCircleFilled position="center" fill="#909090" />
                     </Text>
                     <Text>{exactDuration}</Text>
                   </ViewCountAndPublishedLg>
-                </ChannelViewCountAndPublishedAtExLg>
+                </ChannelViewCountAndPublishedAtContainer>
               </ThumbnailDetails>
             </LogoAndVideoTitleContainer>
           </VideoCardItem>

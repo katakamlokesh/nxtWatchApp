@@ -71,55 +71,61 @@ export const TrendingVideoCardHeading = styled.p`
   }
 `
 
-export const TrendingChannelViewCountAndPublishedAtExSm = styled.div`
+export const ChannelViewCountAndPublishedAtContainer = styled.div`
   display: flex;
   align-items: center;
+
   margin-top: 8px;
   @media screen and (min-width: 576px) {
-    display: none;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
-
-export const TrendingChannelName = styled.p`
-  font-family: 'Roboto';
-  font-size: 12px;
-  color: #909090;
-  @media screen and (min-width: 576px) {
-    font-size: 16px;
-    line-height: 2;
-    margin: 0;
-  }
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
-`
-
-export const TrendingChannelViewCountAndPublishedAtExLg = styled.div`
-  width: 100%;
-  @media screen and (max-width: 575px) {
-    display: none;
-  }
-`
-export const TrendingViewCountAndPublishedLg = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-`
-export const TrendingText = styled.p`
+export const ChannelName = styled.p`
   font-family: 'Roboto';
   font-size: 10px;
   color: #909090;
   padding: 0;
-  margin: 0 10px 0 0;
-  line-height: 2;
+  margin: 0 6px 0 0;
+  line-height: 1;
+  @media screen and (min-width: 576px) {
+    font-size: 14px;
+    line-height: 2;
+    margin: 0;
+  }
+`
+
+export const ViewCountAndPublishedLg = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`
+export const MiddleCircle01 = styled.p`
+  font-family: 'Roboto';
+  font-size: 10px;
+  color: #909090;
+  padding: 0;
+  margin: 0 6px 0 0;
+  line-height: 1;
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
+`
+
+export const Text = styled.p`
+  font-family: 'Roboto';
+  font-size: 10px;
+  color: #909090;
+  padding: 0;
+  margin: 0 6px 0 0;
+  line-height: 1;
   @media screen and (min-width: 576px) {
     font-size: 12px;
   }
   @media screen and (min-width: 768px) {
-    font-size: 14px;
-    margin: 0 10px 0 0;
+    font-size: 9px;
   }
   @media screen and (min-width: 885px) {
-    font-size: 16px;
+    font-size: 12px;
   }
 `

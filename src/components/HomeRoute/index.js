@@ -33,6 +33,7 @@ class HomeRoute extends Component {
     videosList: [],
     apiStatus: apiStatusConstants.initial,
     searchInput: '',
+    showSubscriptionBanner: true,
   }
 
   componentDidMount() {
@@ -227,7 +228,14 @@ class HomeRoute extends Component {
     }
   }
 
+  changeShowSubscriptionBannerStatus = () => {
+    this.setState(prevState => ({
+      showSubscriptionBanner: !prevState.showSubscriptionBanner,
+    }))
+  }
+
   render() {
+    const {showSubscriptionBanner} = this.state
     return (
       <NxtWatchContext.Consumer>
         {value => {
@@ -235,7 +243,13 @@ class HomeRoute extends Component {
 
           return (
             <HomeContainer data-testid="home" light={lightTheme}>
-              <SubscriptionBanner />
+              {showSubscriptionBanner && (
+                <SubscriptionBanner
+                  changeShowSubscriptionBannerStatus={
+                    this.changeShowSubscriptionBannerStatus
+                  }
+                />
+              )}
               {this.renderSearchInput(lightTheme)}
               {this.renderAllVideos()}
             </HomeContainer>

@@ -1,6 +1,6 @@
 import {formatDistanceToNowStrict} from 'date-fns'
 
-import {BsFillCircleFill} from 'react-icons/bs'
+import {VscCircleFilled} from 'react-icons/vsc'
 
 import NxtWatchContext from '../../context/NxtWatchContext'
 
@@ -12,11 +12,11 @@ import {
   TrendingThumbnailDetails,
   TrendingVideoCardHeading,
   TrendingChannelLogo,
-  TrendingChannelViewCountAndPublishedAtExSm,
-  TrendingChannelName,
-  TrendingChannelViewCountAndPublishedAtExLg,
-  TrendingViewCountAndPublishedLg,
-  TrendingText,
+  ChannelName,
+  MiddleCircle01,
+  ViewCountAndPublishedLg,
+  ChannelViewCountAndPublishedAtContainer,
+  Text,
 } from './styledComponents'
 
 const TrendingVideoCard = props => (
@@ -52,41 +52,19 @@ const TrendingVideoCard = props => (
                 <TrendingVideoCardHeading light={lightTheme}>
                   {title}
                 </TrendingVideoCardHeading>
-                <TrendingChannelViewCountAndPublishedAtExSm>
-                  <TrendingText>{channel.name}</TrendingText>
-                  <TrendingText>
-                    <BsFillCircleFill
-                      size="6"
-                      fill="#909090"
-                      position="center"
-                    />
-                  </TrendingText>
-
-                  <TrendingText>{viewCount} views</TrendingText>
-                  <TrendingText>
-                    <BsFillCircleFill
-                      size="6"
-                      fill="#909090"
-                      position="center"
-                    />
-                  </TrendingText>
-                  <TrendingText>{exactDuration}</TrendingText>
-                </TrendingChannelViewCountAndPublishedAtExSm>
-                <TrendingChannelViewCountAndPublishedAtExLg>
-                  <TrendingChannelName>{channel.name}</TrendingChannelName>
-                  <TrendingViewCountAndPublishedLg>
-                    <TrendingText>{viewCount} views </TrendingText>
-                    <TrendingText>
-                      <BsFillCircleFill
-                        size="6"
-                        fill="#909090"
-                        position="center"
-                      />
-                    </TrendingText>
-
-                    <TrendingText>{exactDuration}</TrendingText>
-                  </TrendingViewCountAndPublishedLg>
-                </TrendingChannelViewCountAndPublishedAtExLg>
+                <ChannelViewCountAndPublishedAtContainer>
+                  <ChannelName>{channel.name}</ChannelName>
+                  <ViewCountAndPublishedLg>
+                    <MiddleCircle01>
+                      <VscCircleFilled fill="#909090" position="center" />
+                    </MiddleCircle01>
+                    <Text>{viewCount} views</Text>
+                    <Text>
+                      <VscCircleFilled position="center" fill="#909090" />
+                    </Text>
+                    <Text>{exactDuration}</Text>
+                  </ViewCountAndPublishedLg>
+                </ChannelViewCountAndPublishedAtContainer>
               </TrendingThumbnailDetails>
             </TrendingLogoAndVideoTitleContainer>
           </TrendingVideoCardItem>

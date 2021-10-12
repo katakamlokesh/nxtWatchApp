@@ -5,7 +5,6 @@ export const AddContainer = styled.div`
   padding: 24px;
   background-size: cover;
   height: 300px;
-  display: ${props => (props.show ? 'block' : 'none')};
 `
 export const LogoAndCloseContainer = styled.div`
   display: flex;

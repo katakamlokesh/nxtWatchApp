@@ -1,6 +1,6 @@
 import {formatDistanceToNowStrict} from 'date-fns'
 
-import {BsFillCircleFill} from 'react-icons/bs'
+import {VscCircleFilled} from 'react-icons/vsc'
 
 import NxtWatchContext from '../../context/NxtWatchContext'
 
@@ -12,11 +12,11 @@ import {
   SavedThumbnailDetails,
   SavedVideoCardHeading,
   SavedChannelLogo,
-  SavedChannelViewCountAndPublishedAtExSm,
-  SavedChannelName,
-  SavedChannelViewCountAndPublishedAtExLg,
-  SavedViewCountAndPublishedLg,
-  SavedText,
+  ChannelName,
+  MiddleCircle01,
+  ViewCountAndPublishedLg,
+  ChannelViewCountAndPublishedAtContainer,
+  Text,
 } from './SavedStyledComponents'
 
 const SavedVideoCard = props => (
@@ -52,40 +52,19 @@ const SavedVideoCard = props => (
                 <SavedVideoCardHeading light={lightTheme}>
                   {title}
                 </SavedVideoCardHeading>
-                <SavedChannelViewCountAndPublishedAtExSm>
-                  <SavedText>{channel.name}</SavedText>
-                  <SavedText>
-                    <BsFillCircleFill
-                      size="6"
-                      fill="#909090"
-                      position="center"
-                    />
-                  </SavedText>
-                  <SavedText>{viewCount} Views</SavedText>
-                  <SavedText>
-                    <BsFillCircleFill
-                      size="6"
-                      fill="#909090"
-                      position="center"
-                    />
-                  </SavedText>
-                  <SavedText>{exactDuration}</SavedText>
-                </SavedChannelViewCountAndPublishedAtExSm>
-                <SavedChannelViewCountAndPublishedAtExLg>
-                  <SavedChannelName>{channel.name}</SavedChannelName>
-                  <SavedViewCountAndPublishedLg>
-                    <SavedText>{viewCount} views </SavedText>
-                    <SavedText>
-                      <BsFillCircleFill
-                        size="6"
-                        fill="#909090"
-                        position="center"
-                      />
-                    </SavedText>
-
-                    <SavedText> {exactDuration}</SavedText>
-                  </SavedViewCountAndPublishedLg>
-                </SavedChannelViewCountAndPublishedAtExLg>
+                <ChannelViewCountAndPublishedAtContainer>
+                  <ChannelName>{channel.name}</ChannelName>
+                  <ViewCountAndPublishedLg>
+                    <MiddleCircle01>
+                      <VscCircleFilled fill="#909090" position="center" />
+                    </MiddleCircle01>
+                    <Text>{viewCount} views</Text>
+                    <Text>
+                      <VscCircleFilled position="center" fill="#909090" />
+                    </Text>
+                    <Text>{exactDuration}</Text>
+                  </ViewCountAndPublishedLg>
+                </ChannelViewCountAndPublishedAtContainer>
               </SavedThumbnailDetails>
             </SavedLogoAndVideoTitleContainer>
           </SavedVideoCardItem>
