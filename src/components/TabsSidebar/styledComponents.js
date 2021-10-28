@@ -55,7 +55,6 @@ export const TabLinkLg = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: center;
-  color: ${props => props.lighttheme};
 `
 
 export const TabTextLg = styled.p`
@@ -63,7 +62,7 @@ export const TabTextLg = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
   margin-left: 12px;
-  color: ${props => props.lighttheme};
+  color: ${props => props.light};
   font-weight: ${props => props.isactive};
 `
 

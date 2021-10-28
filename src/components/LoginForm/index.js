@@ -138,7 +138,6 @@ class LoginForm extends Component {
       <NxtWatchContext.Consumer>
         {value => {
           const {lightTheme} = value
-          console.log(lightTheme)
 
           return (
             <LoginFormContainer light={lightTheme} data-testid="login">

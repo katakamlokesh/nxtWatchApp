@@ -1,5 +1,5 @@
-import {Switch, Route, Redirect} from 'react-router-dom'
 import {Component} from 'react'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import ProtectedRoute from './components/ProtectedRoute'
 import NxtWatchContext from './context/NxtWatchContext'
@@ -62,9 +62,8 @@ class App extends Component {
 
   saveVideo = video => {
     const {savedVideosList} = this.state
-    console.log(savedVideosList)
+
     const savedVideo = savedVideosList.some(each => each.id === video.id)
-    console.log(savedVideo)
 
     const videosList = savedVideo
       ? savedVideosList.filter(each => each.id !== video.id)

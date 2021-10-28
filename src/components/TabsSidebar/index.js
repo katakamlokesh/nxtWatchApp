@@ -35,11 +35,9 @@ const TabsSidebar = props => (
               <AiFillHome
                 size="20"
                 color={pathname === tabsList[0].tabId ? '#ff0000' : '#606060'}
-                id={tabsList[0].tabId}
               />
               <TabTextLg
-                lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                id={tabsList[0].tabId}
+                light={lightTheme ? '#272727' : '#ffffff'}
                 isactive={pathname === tabsList[0].tabId ? '700' : '500'}
               >
                 {tabsList[0].displayText}
@@ -56,8 +54,7 @@ const TabsSidebar = props => (
                 color={pathname === tabsList[1].tabId ? '#ff0000' : '#606060'}
               />
               <TabTextLg
-                lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                id={tabsList[1].tabId}
+                light={lightTheme ? '#272727' : '#ffffff'}
                 isactive={pathname === tabsList[1].tabId ? '700' : '500'}
               >
                 {tabsList[1].displayText}
@@ -74,8 +71,7 @@ const TabsSidebar = props => (
                 color={pathname === tabsList[2].tabId ? '#ff0000' : '#606060'}
               />
               <TabTextLg
-                lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                id={tabsList[2].tabId}
+                light={lightTheme ? '#272727' : '#ffffff'}
                 isactive={pathname === tabsList[2].tabId ? '700' : '500'}
               >
                 {tabsList[2].displayText}
@@ -92,8 +88,7 @@ const TabsSidebar = props => (
                 color={pathname === tabsList[3].tabId ? '#ff0000' : '#606060'}
               />
               <TabTextLg
-                lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                id={tabsList[3].tabId}
+                light={lightTheme ? '#272727' : '#ffffff'}
                 isactive={pathname === tabsList[3].tabId ? '700' : '500'}
               >
                 {tabsList[3].displayText}
