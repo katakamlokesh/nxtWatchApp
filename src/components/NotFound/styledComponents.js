@@ -5,7 +5,7 @@ export const NotFoundContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${props => (props.light ? '#f9f9f9' : '#181818')};
+  background-color: transparent;
   min-height: 100vh;
   @media screen and (min-width: 768px) {
     width: 75%;

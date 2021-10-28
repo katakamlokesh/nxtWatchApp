@@ -14,6 +14,8 @@ import {SiYoutubegaming} from 'react-icons/si'
 
 import NxtWatchContext from '../../context/NxtWatchContext'
 
+import './index.css'
+
 import {
   NavHeader,
   NavContent,
@@ -38,7 +40,6 @@ import {
   TabsContainer,
   TabItem,
   TabLink,
-  TabIconButton,
   TabText,
 } from './styledComponents'
 
@@ -66,18 +67,8 @@ const Header = props => {
           ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
           : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
 
-        const onClickTheme = () => {
-          const dm = JSON.parse(localStorage.getItem('dark_mode'))
-
-          if (dm === true) {
-            toggleTheme(false)
-          } else {
-            toggleTheme(true)
-          }
-        }
-
         const renderLogoutPopup = button => (
-          <Popup modal trigger={button} className="popup-container">
+          <Popup modal trigger={button} className="popup-content">
             {close => (
               <LogoutWarning lightTheme={lightTheme}>
                 <LogoutMessage>Are you sure, you want to logout</LogoutMessage>
@@ -95,85 +86,65 @@ const Header = props => {
         )
 
         const renderTabsSidebar = button => (
-          <Popup trigger={button} modal className="popup-container">
+          <Popup modal trigger={button} className="popup-content">
             {close => (
               <PopupContainer>
-                <SidebarMobile lightTheme={lightTheme}>
+                <SidebarMobile light={lightTheme}>
                   <MenuCloseButton type="button" onClick={() => close()}>
                     <MdClose
                       size="40"
                       color={lightTheme ? '#272727' : '#ffffff'}
                     />
                   </MenuCloseButton>
-                  <TabsContainer lightTheme={lightTheme}>
+                  <TabsContainer>
                     <TabItem
-                      key={tabsList[0].tabId}
                       isActive={pathname === tabsList[0].tabId}
                       lightTheme={lightTheme}
                     >
-                      <TabLink
-                        to="/"
-                        lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                        id={tabsList[0].tabId}
-                        onClick={() => close()}
-                      >
-                        <TabIconButton type="button" id={tabsList[0].tabId}>
-                          <span>
-                            <AiFillHome
-                              size="20"
-                              color={
-                                pathname === tabsList[0].tabId
-                                  ? '#ff0000'
-                                  : '#606060'
-                              }
-                              id={tabsList[0].tabId}
-                            />
-                          </span>
-                          <TabText
-                            lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                            id={tabsList[0].tabId}
-                            isactive={
-                              pathname === tabsList[0].tabId ? '700' : '500'
-                            }
-                          >
-                            {tabsList[0].displayText}
-                          </TabText>
-                        </TabIconButton>
+                      <TabLink to="/" onClick={() => close()}>
+                        <AiFillHome
+                          size="20"
+                          color={
+                            pathname === tabsList[0].tabId
+                              ? '#ff0000'
+                              : '#606060'
+                          }
+                        />
+
+                        <TabText
+                          lighttheme={lightTheme ? '#272727' : '#ffffff'}
+                          id={tabsList[0].tabId}
+                          isactive={
+                            pathname === tabsList[0].tabId ? '700' : '500'
+                          }
+                        >
+                          {tabsList[0].displayText}
+                        </TabText>
                       </TabLink>
                     </TabItem>
                     <TabItem
-                      key={tabsList[1].tabId}
                       isActive={pathname === tabsList[1].tabId}
                       lightTheme={lightTheme}
                     >
-                      <TabLink
-                        to="/trending"
-                        lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                        id={tabsList[1].tabId}
-                        onClick={() => close()}
-                      >
-                        <TabIconButton type="button" id={tabsList[1].tabId}>
-                          <span>
-                            <HiFire
-                              size="20"
-                              color={
-                                pathname === tabsList[1].tabId
-                                  ? '#ff0000'
-                                  : '#606060'
-                              }
-                              id={tabsList[1].tabId}
-                            />
-                          </span>
-                          <TabText
-                            lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                            id={tabsList[1].tabId}
-                            isactive={
-                              pathname === tabsList[1].tabId ? '700' : '500'
-                            }
-                          >
-                            {tabsList[1].displayText}
-                          </TabText>
-                        </TabIconButton>
+                      <TabLink to="/trending" onClick={() => close()}>
+                        <HiFire
+                          size="20"
+                          color={
+                            pathname === tabsList[1].tabId
+                              ? '#ff0000'
+                              : '#606060'
+                          }
+                        />
+
+                        <TabText
+                          lighttheme={lightTheme ? '#272727' : '#ffffff'}
+                          id={tabsList[1].tabId}
+                          isactive={
+                            pathname === tabsList[1].tabId ? '700' : '500'
+                          }
+                        >
+                          {tabsList[1].displayText}
+                        </TabText>
                       </TabLink>
                     </TabItem>
                     <TabItem
@@ -181,34 +152,25 @@ const Header = props => {
                       isActive={pathname === tabsList[2].tabId}
                       lightTheme={lightTheme}
                     >
-                      <TabLink
-                        to="/gaming"
-                        lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                        id={tabsList[2].tabId}
-                        onClick={() => close()}
-                      >
-                        <TabIconButton type="button" id={tabsList[2].tabId}>
-                          <span>
-                            <SiYoutubegaming
-                              size="20"
-                              color={
-                                pathname === tabsList[2].tabId
-                                  ? '#ff0000'
-                                  : '#606060'
-                              }
-                              id={tabsList[2].tabId}
-                            />
-                          </span>
-                          <TabText
-                            lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                            id={tabsList[2].tabId}
-                            isactive={
-                              pathname === tabsList[2].tabId ? '700' : '500'
-                            }
-                          >
-                            {tabsList[2].displayText}
-                          </TabText>
-                        </TabIconButton>
+                      <TabLink to="/gaming" onClick={() => close()}>
+                        <SiYoutubegaming
+                          size="20"
+                          color={
+                            pathname === tabsList[2].tabId
+                              ? '#ff0000'
+                              : '#606060'
+                          }
+                        />
+
+                        <TabText
+                          lighttheme={lightTheme ? '#272727' : '#ffffff'}
+                          id={tabsList[2].tabId}
+                          isactive={
+                            pathname === tabsList[2].tabId ? '700' : '500'
+                          }
+                        >
+                          {tabsList[2].displayText}
+                        </TabText>
                       </TabLink>
                     </TabItem>
                     <TabItem
@@ -216,34 +178,25 @@ const Header = props => {
                       isActive={pathname === tabsList[3].tabId}
                       lightTheme={lightTheme}
                     >
-                      <TabLink
-                        to="/saved-videos"
-                        lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                        id={tabsList[3].tabId}
-                        onClick={() => close()}
-                      >
-                        <TabIconButton type="button" id={tabsList[3].tabId}>
-                          <span>
-                            <MdPlaylistAdd
-                              size="20"
-                              color={
-                                pathname === tabsList[3].tabId
-                                  ? '#ff0000'
-                                  : '#606060'
-                              }
-                              id={tabsList[3].tabId}
-                            />
-                          </span>
-                          <TabText
-                            lighttheme={lightTheme ? '#272727' : '#ffffff'}
-                            id={tabsList[3].tabId}
-                            isactive={
-                              pathname === tabsList[3].tabId ? '700' : '500'
-                            }
-                          >
-                            {tabsList[3].displayText}
-                          </TabText>
-                        </TabIconButton>
+                      <TabLink to="/saved-videos" onClick={() => close()}>
+                        <MdPlaylistAdd
+                          size="20"
+                          color={
+                            pathname === tabsList[3].tabId
+                              ? '#ff0000'
+                              : '#606060'
+                          }
+                        />
+
+                        <TabText
+                          lighttheme={lightTheme ? '#272727' : '#ffffff'}
+                          id={tabsList[3].tabId}
+                          isactive={
+                            pathname === tabsList[3].tabId ? '700' : '500'
+                          }
+                        >
+                          {tabsList[3].displayText}
+                        </TabText>
                       </TabLink>
                     </TabItem>
                   </TabsContainer>
@@ -252,6 +205,14 @@ const Header = props => {
             )}
           </Popup>
         )
+
+        const onClickTheme = () => {
+          if (lightTheme === true) {
+            toggleTheme(true)
+          } else {
+            toggleTheme(false)
+          }
+        }
 
         return (
           <NavHeader lightTheme={lightTheme}>

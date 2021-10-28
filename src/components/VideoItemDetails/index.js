@@ -8,15 +8,18 @@ import {GoPrimitiveDot} from 'react-icons/go'
 
 import ReactPlayer from 'react-player'
 
+import Header from '../Header'
+import TabsSidebar from '../TabsSidebar'
+
 import NxtWatchContext from '../../context/NxtWatchContext'
 import {
+  VideoDetailContainer,
   VideoDetailsHomeContainer,
   LoaderContainer,
   VideosRouteFailureContainer,
   VideosRouteFailureHeading,
   VideosRouteFailureDescription,
   VideosRouteFailureImage,
-  VideosRouteFailureRetryButton,
   VideoDetailsContainer,
   VideoPlayerContainer,
   VideoTitle,
@@ -36,6 +39,8 @@ import {
   Description,
 } from './styledComponents'
 
+import {TabsAndContent, RetryButton} from '../Home/styledComponents'
+
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -43,7 +48,7 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class VideoPlayerRoute extends Component {
+class VideoItemDetails extends Component {
   state = {
     videoDetails: {},
     apiStatus: apiStatusConstants.initial,
@@ -120,7 +125,7 @@ class VideoPlayerRoute extends Component {
   renderVideoDetailsView = () => (
     <NxtWatchContext.Consumer>
       {value => {
-        const {lightTheme, savedVideos, saveVideo} = value
+        const {lightTheme, savedVideosList, saveVideo} = value
         const {videoDetails, liked, disliked} = this.state
 
         const {
@@ -137,13 +142,10 @@ class VideoPlayerRoute extends Component {
           addSuffix: true,
         })
 
-        console.log(savedVideos)
         const saved =
-          savedVideos === undefined
+          savedVideosList === undefined
             ? false
-            : Object.values(savedVideos).some(each => each.id === id)
-
-        console.log(saved)
+            : Object.values(savedVideosList).some(each => each.id === id)
 
         const onClickSave = () => {
           saveVideo(videoDetails)
@@ -184,17 +186,15 @@ class VideoPlayerRoute extends Component {
                     />{' '}
                     Dislike
                   </DislikeButton>
-                  <SavedButton
-                    type="button"
-                    onClick={onClickSave}
-                    active={saved}
-                  >
-                    <MdPlaylistAdd
-                      color={saved ? '#2563eb' : '#64748b'}
-                      size="20"
-                    />{' '}
-                    {saved ? 'Saved' : 'Save'}
-                  </SavedButton>
+                  {saved ? (
+                    <SavedButton onClick={onClickSave} active={saved}>
+                      <MdPlaylistAdd color="#2563eb" size="20" /> Saved
+                    </SavedButton>
+                  ) : (
+                    <SavedButton onClick={onClickSave} active={saved}>
+                      <MdPlaylistAdd color="#64748b" size="20" /> Save
+                    </SavedButton>
+                  )}
                 </LikeDislkeButtonsContainer>
               </ContainerStatsAndButtons>
               <MiddleLine light={lightTheme} />
@@ -239,12 +239,9 @@ class VideoPlayerRoute extends Component {
               We are having some trouble to complete your request. Please try
               again.
             </VideosRouteFailureDescription>
-            <VideosRouteFailureRetryButton
-              type="button"
-              onClick={this.onClickFailureRetry}
-            >
+            <RetryButton type="button" onClick={this.onClickFailureRetry}>
               Retry
-            </VideosRouteFailureRetryButton>
+            </RetryButton>
           </VideosRouteFailureContainer>
         )
       }}
@@ -279,12 +276,18 @@ class VideoPlayerRoute extends Component {
           const {lightTheme} = value
 
           return (
-            <VideoDetailsHomeContainer
+            <VideoDetailContainer
               light={lightTheme}
               data-testid="videoItemDetails"
             >
-              {this.renderVideoDetailsStatus()}
-            </VideoDetailsHomeContainer>
+              <Header />
+              <TabsAndContent>
+                <TabsSidebar />
+                <VideoDetailsHomeContainer>
+                  {this.renderVideoDetailsStatus()}
+                </VideoDetailsHomeContainer>
+              </TabsAndContent>
+            </VideoDetailContainer>
           )
         }}
       </NxtWatchContext.Consumer>
@@ -292,4 +295,4 @@ class VideoPlayerRoute extends Component {
   }
 }
 
-export default VideoPlayerRoute
+export default VideoItemDetails

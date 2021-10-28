@@ -41,7 +41,7 @@ const TrendingVideoCard = props => (
 
       return (
         <TrendingVideoLink to={`/videos/${id}`}>
-          <TrendingVideoCardItem key={id}>
+          <TrendingVideoCardItem>
             <TrendingThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
             <TrendingLogoAndVideoTitleContainer>
               <TrendingChannelLogo

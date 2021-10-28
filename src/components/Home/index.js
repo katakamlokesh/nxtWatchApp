@@ -3,11 +3,16 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {BsSearch} from 'react-icons/bs'
 
+import Header from '../Header'
+import TabsSidebar from '../TabsSidebar'
+
 import NxtWatchContext from '../../context/NxtWatchContext'
 import SubscriptionBanner from '../SubscriptionBanner'
 import HomeVideoCard from '../HomeVideoCard'
 
 import {
+  HomeRouteContainer,
+  TabsAndContent,
   HomeContainer,
   LoaderContainer,
   VideoSearchInputContainer,
@@ -17,7 +22,7 @@ import {
   VideosRouteFailureImage,
   VideosRouteFailureHeading,
   VideosRouteFailureDescription,
-  VideosRouteFailureRetryButton,
+  RetryButton,
   VideosUnorderedList,
 } from './styledComponents'
 
@@ -28,7 +33,7 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class HomeRoute extends Component {
+class Home extends Component {
   state = {
     videosList: [],
     apiStatus: apiStatusConstants.initial,
@@ -105,12 +110,9 @@ class HomeRoute extends Component {
             <VideosRouteFailureDescription light={lightTheme}>
               Try different key words or remove search filter
             </VideosRouteFailureDescription>
-            <VideosRouteFailureRetryButton
-              type="button"
-              onClick={this.onClickSearchRetry}
-            >
+            <RetryButton type="button" onClick={this.onClickSearchRetry}>
               Retry
-            </VideosRouteFailureRetryButton>
+            </RetryButton>
           </VideosRouteFailureContainer>
         )
 
@@ -165,7 +167,7 @@ class HomeRoute extends Component {
           onClick={this.onClickSearchIcon}
           light={lightTheme}
         >
-          <BsSearch size="16" color="#181818" />
+          <BsSearch size="16" color={lightTheme ? '#181818' : '#7e858e'} />
         </SearchButton>
       </VideoSearchInputContainer>
     )
@@ -195,12 +197,9 @@ class HomeRoute extends Component {
               We are having some trouble to complete your request. Please try
               again.
             </VideosRouteFailureDescription>
-            <VideosRouteFailureRetryButton
-              type="button"
-              onClick={this.onClickHomeRetry}
-            >
+            <RetryButton type="button" onClick={this.onClickHomeRetry}>
               Retry
-            </VideosRouteFailureRetryButton>
+            </RetryButton>
           </VideosRouteFailureContainer>
         )
       }}
@@ -242,17 +241,23 @@ class HomeRoute extends Component {
           const {lightTheme} = value
 
           return (
-            <HomeContainer data-testid="home" light={lightTheme}>
-              {showSubscriptionBanner && (
-                <SubscriptionBanner
-                  changeShowSubscriptionBannerStatus={
-                    this.changeShowSubscriptionBannerStatus
-                  }
-                />
-              )}
-              {this.renderSearchInput(lightTheme)}
-              {this.renderAllVideos()}
-            </HomeContainer>
+            <HomeRouteContainer data-testid="home" light={lightTheme}>
+              <Header />
+              <TabsAndContent>
+                <TabsSidebar />
+                <HomeContainer>
+                  {showSubscriptionBanner && (
+                    <SubscriptionBanner
+                      changeShowSubscriptionBannerStatus={
+                        this.changeShowSubscriptionBannerStatus
+                      }
+                    />
+                  )}
+                  {this.renderSearchInput(lightTheme)}
+                  {this.renderAllVideos()}
+                </HomeContainer>
+              </TabsAndContent>
+            </HomeRouteContainer>
           )
         }}
       </NxtWatchContext.Consumer>
@@ -260,4 +265,4 @@ class HomeRoute extends Component {
   }
 }
 
-export default HomeRoute
+export default Home

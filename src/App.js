@@ -1,18 +1,17 @@
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {Component} from 'react'
+
 import ProtectedRoute from './components/ProtectedRoute'
 import NxtWatchContext from './context/NxtWatchContext'
 import LoginForm from './components/LoginForm'
-import Header from './components/Header'
-import HomeRoute from './components/HomeRoute'
-import TrendingRoute from './components/TrendingRoute'
-import GamingRoute from './components/GamingRoute'
-import SavedVideosRoute from './components/SavedVideosRoute'
-import VideoPlayerRoute from './components/VideosPlayerRoute'
+import Home from './components/Home'
+import Trending from './components/Trending'
+import Gaming from './components/Gaming'
+import SavedVideos from './components/SavedVideos'
+import VideoItemDetails from './components/VideoItemDetails'
 import NotFound from './components/NotFound'
 
 import './App.css'
-import TabsSidebar from './components/TabsSidebar'
 
 const tabsList = [
   {
@@ -36,14 +35,13 @@ const tabsList = [
 // Replace your code here
 class App extends Component {
   state = {
-    darkMode: '',
-    savedVideos: [],
+    darkMode: false,
+    savedVideosList: [],
   }
 
   componentDidMount() {
     this.setState({
-      darkMode: JSON.parse(localStorage.getItem('dark_mode')),
-      savedVideos: this.getSavedVideosList(),
+      savedVideosList: this.getSavedVideosList(),
     })
   }
 
@@ -57,27 +55,24 @@ class App extends Component {
   }
 
   toggleTheme = dm => {
-    this.setState(
-      {
-        darkMode: localStorage.setItem('dark_mode', JSON.stringify(dm)),
-      },
-      this.componentDidMount,
-    )
+    this.setState({
+      darkMode: dm,
+    })
   }
 
   saveVideo = video => {
-    const {savedVideos} = this.state
-    console.log(savedVideos)
-    const savedVideo = savedVideos.some(each => each.id === video.id)
+    const {savedVideosList} = this.state
+    console.log(savedVideosList)
+    const savedVideo = savedVideosList.some(each => each.id === video.id)
     console.log(savedVideo)
 
     const videosList = savedVideo
-      ? savedVideos.filter(each => each.id !== video.id)
-      : [...savedVideos, {...video}]
+      ? savedVideosList.filter(each => each.id !== video.id)
+      : [...savedVideosList, {...video}]
 
     this.setState(
       {
-        savedVideos: localStorage.setItem(
+        savedVideosList: localStorage.setItem(
           'saved_videos',
           JSON.stringify(videosList),
         ),
@@ -87,13 +82,13 @@ class App extends Component {
   }
 
   render() {
-    const {savedVideos, darkMode} = this.state
+    const {savedVideosList, darkMode} = this.state
 
     return (
       <NxtWatchContext.Provider
         value={{
           lightTheme: !darkMode,
-          savedVideos,
+          savedVideosList,
           saveVideo: this.saveVideo,
           tabsList,
           toggleTheme: this.toggleTheme,
@@ -101,33 +96,17 @@ class App extends Component {
       >
         <Switch>
           <Route path="/login" component={LoginForm} />
-          <>
-            <Header />
-            <div className="TabsAndContent">
-              <TabsSidebar />
-              <Switch>
-                <ProtectedRoute exact path="/" component={HomeRoute} />
-                <ProtectedRoute
-                  exact
-                  path="/trending"
-                  component={TrendingRoute}
-                />
-                <ProtectedRoute exact path="/gaming" component={GamingRoute} />
-                <ProtectedRoute
-                  exact
-                  path="/saved-videos"
-                  component={SavedVideosRoute}
-                />
-                <ProtectedRoute
-                  exact
-                  path="/videos/:id"
-                  component={VideoPlayerRoute}
-                />
-                <Route path="/not-found" component={NotFound} />
-                <Redirect to="not-found" />
-              </Switch>
-            </div>
-          </>
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
+          <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect to="not-found" />
         </Switch>
       </NxtWatchContext.Provider>
     )

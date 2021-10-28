@@ -41,7 +41,7 @@ const HomeVideoCard = props => (
 
       return (
         <VideoLink to={`/videos/${id}`}>
-          <VideoCardItem key={id}>
+          <VideoCardItem>
             <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
             <LogoAndVideoTitleContainer>
               <ChannelLogo src={channel.profileImageUrl} alt="channel logo" />

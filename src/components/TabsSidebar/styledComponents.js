@@ -7,7 +7,7 @@ export const TabsSidebarContainer = styled.div`
   justify-content: space-between;
   width: 25%;
   height: 100vh;
-  background-color: ${props => (props.lightTheme ? '#ffffff' : '#231f20')};
+  background-color: ${props => (props.light ? '#ffffff' : '#231f20')};
   margin: 0;
   @media screen and (max-width: 767px) {
     display: none;
@@ -18,7 +18,7 @@ export const TabsSidebarContainer = styled.div`
   }
 `
 
-export const TabsContainer = styled.ul`
+export const TabsContainerLg = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,13 +30,15 @@ export const TabsContainer = styled.ul`
     justify-content: flex-start;
   }
 `
-export const TabItem = styled.li`
+export const TabItemLg = styled.li`
   display: flex;
+  align-items: center;
   list-style-type: none;
+  padding-left: 16px;
   width: 100%;
   line-height: 1;
   background-color: ${props =>
-    props.isActive && (props.lightTheme ? '#f4f4f4' : '#606060')};
+    props.isActive && (props.light ? '#f4f4f4' : '#606060')};
 `
 export const TabIconButton = styled.button`
   outline: none;
@@ -49,22 +51,18 @@ export const TabIconButton = styled.button`
   align-items: center;
 `
 
-export const TabLink = styled(Link)`
+export const TabLinkLg = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin-left: 150px;
   color: ${props => props.lighttheme};
-  @media screen and (min-width: 768px) {
-    margin-left: 16px;
-    width: 100%;
-  }
 `
 
-export const TabText = styled.p`
+export const TabTextLg = styled.p`
+  text-decoration: none;
   font-family: 'Roboto';
   font-size: 18px;
-  margin-left: 18px;
+  margin-left: 12px;
   color: ${props => props.lighttheme};
   font-weight: ${props => props.isactive};
 `
@@ -76,7 +74,7 @@ export const ContactUsContainer = styled.div`
 export const ContactUsHeading = styled.p`
   font-family: 'Roboto';
   font-size: 20px;
-  color: ${props => (props.lightTheme ? '#383838' : '#ffffff')};
+  color: ${props => (props.light ? '#383838' : '#ffffff')};
 `
 export const SocialIconsContainer = styled.div`
   display: flex;
@@ -91,5 +89,5 @@ export const SocialImage = styled.img`
 export const ContactUsDescription = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
-  color: ${props => (props.lightTheme ? '#383838' : '#ffffff')};
+  color: ${props => (props.light ? '#383838' : '#ffffff')};
 `

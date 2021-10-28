@@ -1,11 +1,15 @@
 import styled from 'styled-components/macro'
 
-export const TrendingHomeContainer = styled.div`
+export const SavedContainer = styled.div`
+  background-color: ${props => (props.light ? '#f9f9f9' : ' #0f0f0f')};
+`
+
+export const SavedHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  background-color: ${props => (props.light ? '#f9f9f9' : '#0f0f0f')};
+  background-color: transparent;
   background-size: cover;
   overflow-y: auto;
   @media screen and (min-width: 768px) {
@@ -17,72 +21,47 @@ export const TrendingHomeContainer = styled.div`
     height: 100vh;
   }
 `
-export const LoaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: transparent;
-`
 
-export const TrendingRouteFailureContainer = styled.div`
+export const SavedVideosRouteFailureContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100%;
   padding: 24px;
   background-color: ${props => (props.light ? '#f9f9f9' : ' #0f0f0f')};
 `
-export const TrendingRouteFailureImage = styled.img`
-  width: 200px;
-  height: 200px;
+export const SavedVideosRouteFailureImage = styled.img`
+  width: 80%;
+  margin-bottom: 36px;
+
   @media screen and (min-width: 768px) {
-    width: 300px;
-    height: 300px;
+    width: 65%;
   }
 `
-export const TrendingRouteFailureHeading = styled.h1`
+export const SavedVideosRouteFailureHeading = styled.h1`
   color: ${props => (props.light ? '#171f46' : '#ffffff')};
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 1.3;
   @media screen and (min-width: 768px) {
-    font-size: 24px;
+    font-size: 26px;
   }
 `
 
-export const TrendingRouteFailureDescription = styled.p`
+export const SavedVideosRouteFailureDescription = styled.p`
   text-align: center;
   color: #64748b;
   font-family: 'Roboto';
-  font-size: 14px;
+  font-size: 18px;
   width: 90%;
   line-height: 1.3;
   text-align: center;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    width: 60%;
-  }
 `
 
-export const TrendingRouteFailureRetryButton = styled.button`
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 14px;
-  padding: 12px 32px;
-  color: #ffffff;
-  background-color: #4f46e5;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-`
-
-export const TrendingHeaderContainer = styled.div`
+export const SavedHeaderContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -93,7 +72,7 @@ export const TrendingHeaderContainer = styled.div`
     padding: 32px;
   }
 `
-export const TrendingIconContainer = styled.div`
+export const SavedIconContainer = styled.div`
   border-radius: 50%;
   padding: 16px;
   background-color: ${props => (props.light ? '#e2e8f0' : '#0f0f0f')};
@@ -102,7 +81,7 @@ export const TrendingIconContainer = styled.div`
     padding: 24px;
   }
 `
-export const TrendingMainHeading = styled.h1`
+export const SavedMainHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 26px;
   color: ${props => (props.light ? '#1e293b' : '#ffffff')};
@@ -114,7 +93,7 @@ export const TrendingMainHeading = styled.h1`
   }
 `
 
-export const TrendingVideosUnorderedList = styled.ul`
+export const SavedVideosUnorderedList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding-left: 0px;

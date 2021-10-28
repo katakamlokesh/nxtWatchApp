@@ -1,8 +1,12 @@
 import {HiFire} from 'react-icons/hi'
 
+import Header from '../Header'
+import TabsSidebar from '../TabsSidebar'
+
 import NxtWatchContext from '../../context/NxtWatchContext'
 import SavedVideoCard from '../SavedVideoCard'
 import {
+  SavedContainer,
   SavedHomeContainer,
   SavedHeaderContainer,
   SavedMainHeading,
@@ -14,10 +18,12 @@ import {
   SavedVideosRouteFailureImage,
 } from './styledComponents'
 
-const SavedVideosRoute = () => (
+import {TabsAndContent} from '../Home/styledComponents'
+
+const SavedVideos = () => (
   <NxtWatchContext.Consumer>
     {value => {
-      const {lightTheme, savedVideos} = value
+      const {lightTheme, savedVideosList} = value
 
       const renderSavedVideos = () => (
         <>
@@ -28,7 +34,7 @@ const SavedVideosRoute = () => (
             <SavedMainHeading light={lightTheme}>Saved Videos</SavedMainHeading>
           </SavedHeaderContainer>
           <SavedVideosUnorderedList light={lightTheme}>
-            {Object.values(savedVideos).map(eachVideo => (
+            {Object.values(savedVideosList).map(eachVideo => (
               <SavedVideoCard key={eachVideo.id} videoDetails={eachVideo} />
             ))}
           </SavedVideosUnorderedList>
@@ -51,14 +57,20 @@ const SavedVideosRoute = () => (
       )
 
       return (
-        <SavedHomeContainer light={lightTheme} data-testid="savedVideos">
-          {Object.values(savedVideos).length > 0
-            ? renderSavedVideos()
-            : renderFailureView()}
-        </SavedHomeContainer>
+        <SavedContainer light={lightTheme} data-testid="savedVideos">
+          <Header />
+          <TabsAndContent>
+            <TabsSidebar />
+            <SavedHomeContainer>
+              {Object.values(savedVideosList).length > 0
+                ? renderSavedVideos()
+                : renderFailureView()}
+            </SavedHomeContainer>
+          </TabsAndContent>
+        </SavedContainer>
       )
     }}
   </NxtWatchContext.Consumer>
 )
 
-export default SavedVideosRoute
+export default SavedVideos

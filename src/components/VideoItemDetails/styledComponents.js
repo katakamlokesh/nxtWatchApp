@@ -1,11 +1,15 @@
 import styled from 'styled-components/macro'
 
+export const VideoDetailContainer = styled.div`
+  background-color: ${props => (props.light ? '#f9f9f9' : '#0f0f0f')};
+`
+
 export const VideoDetailsHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  background-color: ${props => (props.light ? '#f9f9f9' : '#0f0f0f')};
+  background-color: transparent;
   background-size: cover;
   overflow-y: auto;
   @media screen and (min-width: 768px) {

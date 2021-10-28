@@ -12,12 +12,15 @@ import {
   SavedThumbnailDetails,
   SavedVideoCardHeading,
   SavedChannelLogo,
+} from './styledComponents'
+
+import {
   ChannelName,
   MiddleCircle01,
   ViewCountAndPublishedLg,
   ChannelViewCountAndPublishedAtContainer,
   Text,
-} from './SavedStyledComponents'
+} from '../TrendingVideoCard/styledComponents'
 
 const SavedVideoCard = props => (
   <NxtWatchContext.Consumer>
@@ -41,7 +44,7 @@ const SavedVideoCard = props => (
 
       return (
         <SavedVideoLink to={`/videos/${id}`}>
-          <SavedVideoCardItem key={id}>
+          <SavedVideoCardItem>
             <SavedThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
             <SavedLogoAndVideoTitleContainer>
               <SavedChannelLogo

@@ -62,7 +62,6 @@ export const SavedThumbnailDetails = styled.div`
 export const SavedVideoCardHeading = styled.p`
   font-family: 'Roboto';
   font-size: 14px;
-  font-weight: 500;
   margin: 0;
   color: ${props => (props.light ? '#231f20' : '#ffffff')};
   @media screen and (min-width: 576px) {

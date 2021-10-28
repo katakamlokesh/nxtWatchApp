@@ -93,6 +93,7 @@ export const ThemeButton = styled.button`
 `
 
 export const PopupContainer = styled.div`
+  flex-grow: 1;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -169,7 +170,7 @@ export const SidebarMobile = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${props => (props.lightTheme ? '#ffffff' : '#212121')};
+  background-color: ${props => (props.light ? '#ffffff' : '#212121')};
 `
 export const MenuCloseButton = styled.button`
   outline: none;
@@ -184,51 +185,37 @@ export const MenuCloseButton = styled.button`
 
 export const TabsContainer = styled.ul`
   width: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 150px;
+  align-items: center;
+  margin-top: 120px;
+  background-color: transparent;
   padding-left: 0;
-  @media screen and (min-width: 768px) {
-    margin-top: 20px;
-    justify-content: flex-start;
-  }
 `
 export const TabItem = styled.li`
-  display: flex;
-  list-style-type: none;
   width: 100%;
+  list-style-type: none;
   line-height: 1;
   background-color: ${props =>
     props.isActive && (props.lightTheme ? '#f4f4f4' : '#606060')};
-`
-export const TabIconButton = styled.button`
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 50px;
-  background-color: transparent;
-  margin-right: 16px;
-  display: flex;
-  align-items: center;
 `
 
 export const TabLink = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin-left: 150px;
+  justify-content: center;
   color: ${props => props.lighttheme};
-  @media screen and (min-width: 768px) {
-    margin-left: 16px;
-    width: 100%;
-  }
 `
 
 export const TabText = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
-  margin-left: 18px;
+  line-height: 2.4;
+  margin: 0px;
+  margin-left: 8px;
   color: ${props => props.lighttheme};
   font-weight: ${props => props.isactive};
 `

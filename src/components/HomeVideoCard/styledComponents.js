@@ -1,6 +1,5 @@
-import styled from 'styled-components/macro'
-
 import {Link} from 'react-router-dom'
+import styled from 'styled-components'
 
 export const VideoLink = styled(Link)`
   text-decoration: none;
@@ -18,8 +17,6 @@ export const VideoCardItem = styled.li`
   background-color: transparent;
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 576px) {
-  }
 `
 
 export const ThumbnailImage = styled.img`

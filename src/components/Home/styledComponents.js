@@ -1,11 +1,26 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
+
+export const HomeRouteContainer = styled.div`
+  background-color: ${props => (props.light ? '#f9f9f9' : '#181818')};
+`
+
+export const TabsAndContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    height: 100vh;
+  }
+`
 
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  background-color: ${props => (props.light ? '#f9f9f9' : '#181818')};
+  background-color: transparent;
   background-size: cover;
   overflow-y: auto;
   @media screen and (min-width: 768px) {
@@ -110,7 +125,7 @@ export const VideosRouteFailureDescription = styled.p`
   }
 `
 
-export const VideosRouteFailureRetryButton = styled.button`
+export const RetryButton = styled.button`
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 14px;
